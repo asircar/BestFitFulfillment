@@ -7,14 +7,126 @@ Java 8
 
 How to run
 -----------
- - Add this project to eclipse with Java 8 as the JDK 
- - Run the CreateDataAndRun class which is the main class
- - Output will be printed on console
- 
- Input/Output
- ------------
- - The input is prepared in CreateDataAndRun class and is the exact same input as provided in the challenge
- - The output is prepared in FulfillmentService.java, lines 34-37
+Start the web service
+Run the following commands in /BestFitFulfillment to start the service.
+
+1.  [LINUX] ./gradlew build
+    [WINDOWS] gradlew.bat build
+
+2.  [LINUX] ./gradlew bootRun
+    [WINDOWS] gradlew.bat bootRun
+
+Default port of the service is 8080. You can change this port in resources/application.properties.
+
+Supported Endpoints
+-----------
+[POST] Get generated consignments for a set of supplies orders
+http://localhost:8080/fulfill
+
+Input/Output
+------------
+Request
+{
+	"orders":
+	[
+		{
+			"destination":"Surat",
+			"orderEntries": {
+				"product-1":14.0,
+				"product-2":10.0,
+				"product-3":3.0
+			}
+		},
+		{
+			"destination":"Noida",
+			"orderEntries": {
+				"product-2":6.0,
+				"product-3":1.0,
+				"product-4":5.0
+			}
+		}
+	],
+	"warehouses":
+	[
+		{
+			"location":"Goa",
+			"inventory": {
+				"product-1":10.0,
+				"product-2":12.0,
+				"product-3":5.0
+			}
+		},
+		{
+			"location":"Mumbai",
+			"inventory": {
+				"product-1":4.0,
+				"product-2":4.0,
+				"product-3":4.0
+			}
+		},
+		{
+			"location":"Moradabad",
+			"inventory": {
+				"product-1":4.0,
+				"product-4":5.0
+			}
+		}
+	]
+}
+
+Response
+{
+    "consignments": [
+        {
+            "location": "Goa",
+            "destination": "Surat",
+            "sku": "product-1",
+            "amount": 10
+        },
+        {
+            "location": "Goa",
+            "destination": "Surat",
+            "sku": "product-2",
+            "amount": 10
+        },
+        {
+            "location": "Goa",
+            "destination": "Surat",
+            "sku": "product-3",
+            "amount": 3
+        },
+        {
+            "location": "Mumbai",
+            "destination": "Surat",
+            "sku": "product-1",
+            "amount": 4
+        },
+        {
+            "location": "Mumbai",
+            "destination": "Noida",
+            "sku": "product-2",
+            "amount": 4
+        },
+        {
+            "location": "Mumbai",
+            "destination": "Noida",
+            "sku": "product-3",
+            "amount": 1
+        },
+        {
+            "location": "Moradabad",
+            "destination": "Noida",
+            "sku": "product-4",
+            "amount": 5
+        },
+        {
+            "location": "Goa",
+            "destination": "Noida",
+            "sku": "product-2",
+            "amount": 2
+        }
+    ]
+}
  
  Algorithm 
  ---------
@@ -55,4 +167,4 @@ How to run
  3. Double Click on the default "Hybris_OMS_Config", it will open up the respective SourcingConfig
  4. Hybris by default provides 4 weight factors - distance, allocation, priority and source
  5. Mark the "Allocation Weight Factor" as 100, rest all as 0.
- 6. This will make sure that whenever an order is fulfilled the best suited warehouse to fulfill that order completely is picked, hence reducing the number of destination-location combinations over time
+ 6. This will make sure that whenever an order is fulfilled the best suited warehouse to fulfill that order completely is picked, hence reducing the number of destination-location combinations over time.
