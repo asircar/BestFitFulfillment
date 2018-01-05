@@ -9,6 +9,10 @@ public class Consignment {
 
     private Double amount;
 
+    public Consignment() {
+        super();
+    }
+
     public Consignment(String location, String destination, String sku, Double amount) {
         this.location = location;
         this.destination = destination;
@@ -31,4 +35,5 @@ public class Consignment {
     public Double getAmount() {
         return amount;
     }
+
 }

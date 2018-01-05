@@ -23,4 +23,5 @@ public class Order {
     public void setOrderEntries(Map<String, Double> orderEntries) {
             this.orderEntries = orderEntries;
         }
+
 }

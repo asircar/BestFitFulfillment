@@ -1,5 +1,7 @@
 package com.techgig.fulfillment.data;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Map;
 
 public class Warehouse {
@@ -10,10 +12,14 @@ public class Warehouse {
 
     private Double percentFulfilled;
 
-    public Warehouse(String location, Map<String, Double> inventory, Double percentFulfilled) {
+    public Warehouse() {
+        super();
+    }
+
+    public Warehouse(String location, Map<String, Double> inventory) {
         this.location = location;
         this.inventory = inventory;
-        this.percentFulfilled = percentFulfilled;
+        this.percentFulfilled = 0D;
     }
 
     public String getLocation() {
@@ -31,4 +37,5 @@ public class Warehouse {
     public void setPercentFulfilled(Double percentFulfilled) {
         this.percentFulfilled = percentFulfilled;
     }
+
 }

@@ -13,6 +13,7 @@ public class FulfillmentResponse {
     }
 
     public List<Consignment> getConsignments() {
-        return consignments;
+        return this.consignments;
     }
+
 }

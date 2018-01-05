@@ -1,7 +1,6 @@
 package com.techgig.fulfillment.controllers;
 
 import com.techgig.fulfillment.requests.FulfillmentRequest;
-import com.techgig.fulfillment.data.Consignment;
 import com.techgig.fulfillment.responses.FulfillmentResponse;
 import com.techgig.fulfillment.services.FulfillmentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Collection;
-import java.util.Collections;
 
 @RestController
 @RequestMapping("/fulfill")
@@ -23,7 +19,7 @@ public class FulfillmentController {
 
     @RequestMapping(method = RequestMethod.POST)
     public @ResponseBody FulfillmentResponse fulfill(@RequestBody FulfillmentRequest fulfillmentRequest) {
-        return new FulfillmentResponse(fulfillmentService.fulfill(fulfillmentRequest.getOrders()));
+        return new FulfillmentResponse(fulfillmentService.fulfill(fulfillmentRequest.getOrders(), fulfillmentRequest.getWarehouses()));
     }
 }
 
