@@ -4,6 +4,9 @@ Fitness Evaluator Project
 Tech Stack Used
 ---------------- 
 Java 8
+REST
+SpringBoot
+Gradle
 
 How to run
 -----------
@@ -26,6 +29,8 @@ http://localhost:8080/fulfill
 Input/Output
 ------------
 Request
+
+```json
 {
 	"orders":
 	[
@@ -73,8 +78,11 @@ Request
 		}
 	]
 }
+```
 
 Response
+
+```json
 {
     "consignments": [
         {
@@ -127,6 +135,7 @@ Response
         }
     ]
 }
+```
  
  Algorithm 
  ---------
