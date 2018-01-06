@@ -10,8 +10,9 @@ Gradle
 
 How to run
 -----------
-Start the web service
-Run the following commands in /BestFitFulfillment to start the service.
+- Extract the zip or clone/download from [github](https://github.com/asircar/BestFitFulfillment)
+
+- Run the following commands in ```/BestFitFulfillment```  to build and start the service.
 
 1.  [LINUX]/[macOS] ```./gradlew build```
 
@@ -21,16 +22,17 @@ Run the following commands in /BestFitFulfillment to start the service.
 
     [WINDOWS] ```gradlew.bat bootRun```
 
-Default port of the service is 8080. You can change this port in resources/application.properties.
+- Access the endpoint, default port of the service is ```8080```. You can change this port in ```resources/application.properties```.
 
 Supported Endpoints
 -----------
 [POST] Get generated consignments for a set of supplies orders
+
 http://localhost:8080/fulfill
 
 Input/Output
 ------------
-Request
+Sample Request
 
 ```json
 {
@@ -141,7 +143,7 @@ Response
  
  Algorithm 
  ---------
- 1. The problem statement was to achieve the minimum sets of location-destination combinations
+ 1. The problem statement was to achieve the minimum sets of location-destination combinations to fulfill the orders
  2. To achieve the desired output, the best way ahead was to fulfill an order to the max using the best fit warehouse
  3. If the order is not fulfilled completely then move to the next fit warehouse
  4. The best fit warehouse has to be chosen based on how good it is to fulfill the order based on order items and their quantities
@@ -152,14 +154,19 @@ Response
  ----------------
  - Data structure chosen for order is Order.java
  - Data structure for Warehouse is Warehouse.java
+ - Data structure for output is Consignment.java
+ - The data structures are kept in the data package
  - The above data structures are in strict coherence to the given problem statement
- - The data is created in the class CreateDataAndRun and it calls fulfill method of the FulfillmentService class by passing the orders and the warehouses
+ - The orders and warehouses data is expected as JSON input and the output is also a JSON
+ - Input maps to the class FulfillmentRequest.java
+ - Output maps to the class FulfillmentResponse.java
+ - The endpoint invokes the fulfill method of FulfillmentService
  - Orders are iterated and each order is passed along with the list of warehouses to the calculateFitness method
  - calculateFitness method iterates over each warehouse and sends the order and warehouse to calculateFitnessOfWarehouseForOrder
  - calculateFitnessOfWarehouseForOrder calculates the percentage of the order fulfilled by the particular warehouse and updates the perecentFulfilled attribute in Warehouse class
  - The warehouses are then sorted based on descending order of percentFulfilled
  - The order along with the sorted warehouse is then passed to the fillOrder method
- - fillOrder method fulfills the order and updates the warehouse inventory along with population of the FulfillmentData object which is used to display the output
+ - fillOrder method fulfills the order and updates the warehouse inventory along with population of the response object which is used to display the output
  
  Assumptions
  -----------
