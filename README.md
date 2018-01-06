@@ -1,15 +1,14 @@
 # Best Fit Fulfillment
--------------------------
 
 ## Tech Stack Used
----------------- 
+
 Java 8
 REST
 SpringBoot
 Gradle
 
 ## How to run
------------
+
 - Extract the zip or clone/download from [github](https://github.com/asircar/BestFitFulfillment)
 
 - Run the following commands in ```/BestFitFulfillment```  to build and start the service.
@@ -25,13 +24,13 @@ Gradle
 - Access the endpoint, default port of the service is ```8080```. You can change this port in ```resources/application.properties```.
 
 ## Supported Endpoints
------------
+
 [POST] Get generated consignments for a set of supplies orders
 
 http://localhost:8080/fulfill
 
 ## Input/Output
-------------
+
 ### Request
 
 ```json
@@ -142,7 +141,7 @@ http://localhost:8080/fulfill
 ```
  
  ## Algorithm 
- ---------
+
  1. The problem statement was to achieve the minimum sets of location-destination combinations to fulfill the orders
  2. To achieve the desired output, the best way ahead was to fulfill an order to the max using the best fit warehouse
  3. If the order is not fulfilled completely then move to the next fit warehouse
@@ -151,7 +150,7 @@ http://localhost:8080/fulfill
  6. Order will be first fulfilled using warehouses sorted on their best fit as calculated above
  
  ## Code Explanation
- ----------------
+
  - Data structure chosen for order is Order.java
  - Data structure for Warehouse is Warehouse.java
  - Data structure for output is Consignment.java
@@ -169,7 +168,7 @@ http://localhost:8080/fulfill
  - fillOrder method fulfills the order and updates the warehouse inventory along with population of the response object which is used to display the output
  
  ## Assumptions
- -----------
+
  1. The input/output has been prepared in strict accordance to the problem statement
  2. Factors such as distance between location and destination, priority of location etc. have been kept out as there was no mention of them in the problem statement
  3. The code assumes that the input orders are already collated for particular locations
@@ -177,7 +176,7 @@ http://localhost:8080/fulfill
  5. The code does not use any database or data repository, it creates data on the fly and prepares the output for display
  
  ## How to do this in Hybris
- ------------------------
+ 
  Doing this in Hybris will not require any kind of customization. It will work out of the box with just configurations as Hybris provides the support of Fitness Evaluator in warehousing extension. To try this out perform the following steps
  
  1. Install the latest Hybris B2C accelerator along with the oms module
