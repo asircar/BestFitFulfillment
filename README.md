@@ -14,10 +14,12 @@ Start the web service
 Run the following commands in /BestFitFulfillment to start the service.
 
 1.  [LINUX]/[macOS] ```./gradlew build```
-    [WINDOWS]/[macOS] ```gradlew.bat build```
+
+    [WINDOWS] ```gradlew.bat build```
 
 2.  [LINUX]/[macOS] ```./gradlew bootRun```
-    [WINDOWS]/[macOS] ```gradlew.bat bootRun```
+
+    [WINDOWS] ```gradlew.bat bootRun```
 
 Default port of the service is 8080. You can change this port in resources/application.properties.
 
