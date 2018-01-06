@@ -2,10 +2,10 @@
 
 ## Tech Stack Used
 
-Java 8
-REST
-SpringBoot
-Gradle
+- Java 8
+- REST
+- SpringBoot
+- Gradle
 
 ## How to run
 
